@@ -1,6 +1,5 @@
 /* eslint-disable import/no-cycle */
 import getWeatherData from './API';
-// import Sunny from './img/frank-mckenna-eXHeq48Z-Q4-unsplash.jpg';
 
 const initaliseDOM = (() => {
   const submitLocation = document.querySelector('.confirm-location');
@@ -36,8 +35,9 @@ function setBackground(data) {
   const weatherCondition = data.current.condition.text;
   console.log(weatherCondition);
   // Overcast, Partly Cloudy, Moderate or heavy rain shower, Sunny, Clear, Light rain, Mist, Fog, Thundery outbreaks possible, Moderate or heavy rain with thunder
-  if (weatherCondition === 'Sunny') {
-    console.log('cuck');
+  if (weatherCondition === 'Partly cloudy') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/Partly-cloudy.jpg)';
   }
 }
 

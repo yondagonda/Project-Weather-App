@@ -2,7 +2,7 @@ import './style.css';
 import getWeatherData from './API';
 import initaliseDOM from './displayDOM';
 
-getWeatherData('Melbourne');
+getWeatherData('Sydney');
 
 // initaliseDOM; this isnt needed? as module function inside auto executes?
 

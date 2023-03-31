@@ -1,8 +1,8 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
-}
+} */
 
 :root {
   --clr-primary: rgb(242, 242, 242);
@@ -15,36 +15,58 @@
   margin: 0;
   padding: 0;
   /* font-family: var(--ff-primary); */
-  /* color: var(--clr-primary); */
+  color: var(--clr-primary);
 }
 
 .app-container {
-  background-color: rgb(179, 201, 201);
   display: grid;
   grid-template-columns: 2fr 1fr;
   border: 1px solid black;
-  width: clamp(450px, 90%, 1000px);
+  width: clamp(350px, 90%, 1100px);
   margin-inline: auto;
   margin-top: 1em;
   margin-bottom: 1em;
   border-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 main {
-  padding: 2em;
+  /* padding: 2em; */
   display: grid;
-  grid-template-rows: 1fr 12fr;
+  grid-template-rows: 1fr 8fr;
   align-items: flex-end;
+}
+
+@media screen and (max-width: 640px) {
+  .app-container {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+  main {
+    /* padding: 2em; */
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    align-items: flex-end;
+  }
 }
 
 .app-header {
   font-size: 2em;
+  padding-left: 1em;
+  padding-top: 1em;
+  font-weight: bold;
 }
 
 .weather-info {
   display: flex;
   align-items: center;
   gap: 1em;
+  padding-left: 2em;
+  padding-bottom: 2em;
 }
 
 .temperature {
@@ -53,17 +75,57 @@ main {
 .location {
   font-size: 2.8em;
 }
+#location-input {
+  color: white;
+}
 
 .sidebar {
-  border-left: 1px solid black;
-  padding: 1em;
+  /* padding: 1em; */
+  background: rgba(110, 110, 110, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 6em;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  padding-top: 2em;
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+#location-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1.1em;
+}
+.confirm-location {
+  color: black;
+  width: 1.6em;
+  padding: 4px;
+}
+.confirm-location:hover {
+  background-color: rgb(85, 83, 83);
 }
 
 .weather-details {
-  padding-top: 2em;
+  padding-top: 3em;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
+  width: 80%;
+}
+.weather-details-header {
+  font-weight: bold;
+  padding-bottom: 1em;
 }
 
 .cloudy,
