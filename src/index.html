@@ -4,10 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
     <script src="../dist/main.js" defer></script>
   </head>
   <body>
-    <h1>yo dude</h1>
+    <div class="app-container">
+      <main>
+        <div class="app-header">Weather App</div>
+        <div class="weather-info">
+          <div class="temperature"></div>
+          <!-- <div class="celsius">C</div> -->
+          <div class="location"></div>
+          <div class="weather-status"></div>
+        </div>
+      </main>
+      <section class="sidebar">
+        <div class="search-bar">
+          <input type="text" id="location-input" />
+          <button class="confirm-location">Get Weather</button>
+        </div>
+        <div class="weather-details">
+          <div class="weather-details-header">Weather Details</div>
+          <div class="cloudy">
+            <div class="cloudy-title">Cloudy</div>
+            <div class="cloudy-value">%</div>
+          </div>
+          <div class="humidity">
+            <div class="humidity-title">Humidity</div>
+            <div class="humidity-value">%</div>
+          </div>
+          <div class="wind">
+            <div class="wind-title">Wind</div>
+            <div class="wind-value"></div>
+          </div>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

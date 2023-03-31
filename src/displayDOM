@@ -1,0 +1,44 @@
+/* eslint-disable import/no-cycle */
+import getWeatherData from './API';
+// import Sunny from './img/frank-mckenna-eXHeq48Z-Q4-unsplash.jpg';
+
+const initaliseDOM = (() => {
+  const submitLocation = document.querySelector('.confirm-location');
+  submitLocation.addEventListener('click', () => {
+    const locationInput = document.getElementById('location-input').value;
+    console.log(locationInput);
+    getWeatherData(locationInput);
+  });
+})();
+
+function displayWeatherData(data) {
+  const temperature = document.querySelector('.temperature');
+  temperature.innerHTML = data.current.temp_c;
+  console.log(data.current.temp_c);
+
+  const location = document.querySelector('.location');
+  location.innerHTML = data.location.name;
+
+  const weatherStatus = document.querySelector('.weather-status');
+  weatherStatus.innerHTML = data.current.condition.text;
+
+  const cloudy = document.querySelector('.cloudy-value');
+  cloudy.innerHTML = `${data.current.cloud}%`;
+
+  const humidity = document.querySelector('.humidity-value');
+  humidity.innerHTML = `${data.current.humidity}%`;
+
+  const wind = document.querySelector('.wind-value');
+  wind.innerHTML = `${data.current.wind_kph}km/h`;
+}
+
+function setBackground(data) {
+  const weatherCondition = data.current.condition.text;
+  console.log(weatherCondition);
+  // Overcast, Partly Cloudy, Moderate or heavy rain shower, Sunny, Clear, Light rain, Mist, Fog, Thundery outbreaks possible, Moderate or heavy rain with thunder
+  if (weatherCondition === 'Sunny') {
+    console.log('cuck');
+  }
+}
+
+export { initaliseDOM, displayWeatherData, setBackground };

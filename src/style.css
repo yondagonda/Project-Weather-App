@@ -1,3 +1,74 @@
-h1 {
-  color: red;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-primary: rgb(242, 242, 242);
+  /* --clr-accent: rgb(216, 92, 83);
+
+  --ff-primary: Arial; */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: var(--ff-primary); */
+  /* color: var(--clr-primary); */
+}
+
+.app-container {
+  background-color: rgb(179, 201, 201);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border: 1px solid black;
+  width: clamp(450px, 90%, 1000px);
+  margin-inline: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 12px;
+}
+
+main {
+  padding: 2em;
+  display: grid;
+  grid-template-rows: 1fr 12fr;
+  align-items: flex-end;
+}
+
+.app-header {
+  font-size: 2em;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.temperature {
+  font-size: 5em;
+}
+.location {
+  font-size: 2.8em;
+}
+
+.sidebar {
+  border-left: 1px solid black;
+  padding: 1em;
+}
+
+.weather-details {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.cloudy,
+.humidity,
+.wind {
+  display: flex;
+  justify-content: space-between;
 }
