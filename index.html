@@ -1,9 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Development</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><script defer src="main.js"></script></head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script src="../dist/main.js" defer></script>
+  </head>
   <body>
+    <div class="app-container">
+      <main>
+        <div class="app-header">Weather App</div>
+        <div class="weather-info">
+          <div class="temperature"></div>
+          <div class="location"></div>
+          <div class="weather-status"></div>
+        </div>
+      </main>
+      <section class="sidebar">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="location-input"
+            placeholder="Search Location..."
+          />
+          <img src="./img/search-icon.svg" class="confirm-location" />
+        </div>
+        <div class="weather-details">
+          <div class="weather-details-header">Weather Details</div>
+          <div class="cloudy">
+            <div class="cloudy-title">Cloudy</div>
+            <div class="cloudy-value">%</div>
+          </div>
+          <div class="humidity">
+            <div class="humidity-title">Humidity</div>
+            <div class="humidity-value">%</div>
+          </div>
+          <div class="wind">
+            <div class="wind-title">Wind</div>
+            <div class="wind-value"></div>
+          </div>
+        </div>
+        <div class="converter">
+          <div class="farenheit">Farenheit</div>
+          <label class="switch">
+            <input type="checkbox" class="toggle" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </section>
+    </div>
   </body>
 </html>
