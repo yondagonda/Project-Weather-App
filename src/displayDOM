@@ -1,19 +1,32 @@
 /* eslint-disable import/no-cycle */
 import getWeatherData from './API';
 
-const initaliseDOM = (() => {
+function initaliseDOM() {
   const submitLocation = document.querySelector('.confirm-location');
   submitLocation.addEventListener('click', () => {
     const locationInput = document.getElementById('location-input').value;
     console.log(locationInput);
     getWeatherData(locationInput);
   });
-})();
+
+  const searchInput = document.getElementById('location-input');
+  searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      const locationInput = document.getElementById('location-input').value;
+      getWeatherData(locationInput);
+    }
+  });
+}
 
 function displayWeatherData(data) {
+  const toggle = document.querySelector('.toggle');
   const temperature = document.querySelector('.temperature');
-  temperature.innerHTML = data.current.temp_c;
-  console.log(data.current.temp_c);
+
+  if (toggle.checked) {
+    temperature.innerHTML = `${data.current.temp_f}°`;
+  } else {
+    temperature.innerHTML = `${data.current.temp_c}°`;
+  }
 
   const location = document.querySelector('.location');
   location.innerHTML = data.location.name;
@@ -33,12 +46,70 @@ function displayWeatherData(data) {
 
 function setBackground(data) {
   const weatherCondition = data.current.condition.text;
-  console.log(weatherCondition);
-  // Overcast, Partly Cloudy, Moderate or heavy rain shower, Sunny, Clear, Light rain, Mist, Fog, Thundery outbreaks possible, Moderate or heavy rain with thunder
+
   if (weatherCondition === 'Partly cloudy') {
     document.querySelector('.app-container').style.backgroundImage =
       'url(img/Partly-cloudy.jpg)';
+  } else if (
+    weatherCondition === 'Light rain' ||
+    weatherCondition === 'Light drizzle' ||
+    weatherCondition === 'Light sleet showers'
+  ) {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/light-rain.jpg)';
+  } else if (weatherCondition === 'Overcast') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/overcast.jpg)';
+  } else if (weatherCondition === 'Clear') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/clear.jpg)';
+  } else if (weatherCondition === 'Fog' || weatherCondition === 'Mist') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/fog.jpg)';
+  } else if (weatherCondition === 'Sunny') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/sunny.jpg)';
+  } else if (weatherCondition === 'Patchy rain possible') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/patchy-rain.jpg)';
+  } else if (
+    weatherCondition === 'Moderate rain' ||
+    weatherCondition === 'Moderate or heavy rain shower'
+  ) {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/moderate-rain.jpg)';
+  } else if (
+    weatherCondition === 'Thundery outbreaks possible' ||
+    weatherCondition === 'Moderate or heavy rain with thunder' ||
+    weatherCondition === 'Patchy light rain with thunder'
+  ) {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/thunder.jpg)';
+  } else if (weatherCondition === 'Light snow') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/lightsnow.jpg)';
+  } else if (weatherCondition === 'Heavy snow') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/heavy-snow.jpg)';
+  } else if (weatherCondition === 'Cloudy') {
+    document.querySelector('.app-container').style.backgroundImage =
+      'url(img/cloudy.jpg)';
   }
 }
+
+const toggle = document.querySelector('.toggle');
+toggle.addEventListener('click', () => {
+  let tempValue = document.querySelector('.temperature').innerText;
+  tempValue = +tempValue.substring(0, tempValue.length - 1);
+
+  if (toggle.checked) {
+    tempValue = (tempValue * 9) / 5 + 32;
+    tempValue = Math.round(tempValue * 10) / 10;
+    document.querySelector('.temperature').innerText = `${tempValue}°`;
+  } else {
+    tempValue = Math.round((tempValue - 32) * (5 / 9) * 10) / 10;
+    document.querySelector('.temperature').innerText = `${tempValue}°`;
+  }
+});
 
 export { initaliseDOM, displayWeatherData, setBackground };

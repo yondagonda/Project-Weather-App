@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 import { displayWeatherData, setBackground } from './displayDOM';
@@ -9,11 +10,11 @@ async function getWeatherData(location) {
       { mode: 'cors' }
     );
     const weatherData = await response.json();
-    console.log(weatherData);
+    // console.log(weatherData);
     displayWeatherData(weatherData);
     setBackground(weatherData);
   } catch (error) {
-    alert(`ERROR: Location not found`); // this executes now when location cannot be found
+    alert(`ERROR: No matching location found.`);
   }
 }
 
